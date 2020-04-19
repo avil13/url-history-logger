@@ -21,9 +21,21 @@ export class HistoryLogger {
 
   private cachedUuid: string = '';
 
+  private static instance: HistoryLogger;
+
   constructor() {
+    if (!(this instanceof HistoryLogger)) {
+      return new HistoryLogger();
+    }
+
+    if (HistoryLogger.instance) {
+      return HistoryLogger.instance;
+    }
+
     this.loadEventHistory();
     this.runWatcher();
+
+    HistoryLogger.instance = this;
   }
 
   subscribe(func: (e: IUrlEventDTO) => void) {

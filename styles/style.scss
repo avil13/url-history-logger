@@ -1,5 +1,6 @@
 .container {
-  a {
+  a, button {
+    cursor: pointer;
     color: #1feed2;
     margin: 2rem;
     padding: 1rem;
@@ -24,7 +25,7 @@
     -webkit-box-shadow: 1px 3px 2px 1px #B8B8B8;
     box-shadow: 1px 3px 2px 1px #B8B8B8;
   }
-  .shdow-inset {
+  .shadow-inset {
     -webkit-box-shadow: inset 1px 3px 2px 1px #B8B8B8;
     box-shadow: inset 1px 3px 2px 1px #B8B8B8;
   }
