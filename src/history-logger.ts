@@ -14,7 +14,7 @@ const KEYS = {
   HISTORY_SESSION: '_HISTORY_SESSION_',
 };
 
-export class UrlHistoryLogger {
+export class HistoryLogger {
   private listeners: any[] = [];
 
   private historySession: IUrlEventDTO[] = [];
