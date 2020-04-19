@@ -3,7 +3,6 @@ import uuid from '@lukeed/uuid';
 export interface IUrlEventDTO {
   url: string;
   type: string;
-  historyLength: number;
   date: string;
 }
 
@@ -95,7 +94,6 @@ export class HistoryLogger {
     return {
       url: location.href,
       type: event.type,
-      historyLength: history.length,
       date: Date().toString(),
     };
   }

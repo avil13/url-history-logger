@@ -6,13 +6,13 @@ import { makeWrapError } from './error-loader';
  * Обработка ошибок
  *
  */
-makeWrapError((queueErrors) => {
+makeWrapError((queueErrors: any[]) => {
   const text = [
     '',
     '// Мы получили очередь ошибок',
     '// Это уже можно отпрвить на сервер',
     'var result =',
-    JSON.stringify(queueErrors, null, 2),
+    JSON.stringify(queueErrors.reverse(), null, 2),
   ].join('\n');
 
   write('#txt', text, true);
