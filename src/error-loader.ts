@@ -19,12 +19,13 @@ export const wrapError = (_window, _onerror, callback?: Function) => {
   _window[_onerror] = (...args) => {
     const [message, source, lineno, colno, exception] = args;
     queue({
-      e: {
+      err: {
         message,
         source,
         lineno,
         colno,
         exception,
+        date: (new Date()).toString(),
       },
       urlHist: historyLogger.getHistory(),
     });

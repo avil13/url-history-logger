@@ -5,8 +5,6 @@ export interface IUrlEventDTO {
   type: string;
   historyLength: number;
   date: string;
-  userAgent: string;
-  sessionUuid: string;
 }
 
 const KEYS = {
@@ -53,13 +51,13 @@ export class HistoryLogger {
       'locationchange',
     ];
 
-    eventNames.forEach(eventName => {
-      window.addEventListener(eventName, event => {
+    eventNames.forEach((eventName) => {
+      window.addEventListener(eventName, (event) => {
         const eventDto = this.getEventDto(event);
 
         this.addEventHistory(eventDto);
 
-        this.listeners.forEach(func => {
+        this.listeners.forEach((func) => {
           func(eventDto);
         });
       });
@@ -67,7 +65,13 @@ export class HistoryLogger {
   }
 
   getHistory() {
-    return this.historySession.map(item => ({ ...item }));
+    return {
+      info: {
+        userAgent: navigator.userAgent,
+        sessionUuid: this.uuid,
+      },
+      history: this.historySession.map((item) => ({ ...item })),
+    };
   }
 
   loadEventHistory() {
@@ -93,8 +97,6 @@ export class HistoryLogger {
       type: event.type,
       historyLength: history.length,
       date: Date().toString(),
-      userAgent: navigator.userAgent,
-      sessionUuid: this.uuid,
     };
   }
 
