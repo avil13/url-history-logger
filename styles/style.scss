@@ -23,19 +23,16 @@
     font-size: 1rem;
   }
   .code-block,.code-block * {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    color: #0782b1;
-    font-family: source-code-pro, monospace;
     font-size: 0.8rem;
     font-weight: 100;
     height: auto;
-    line-height: 1rem;
+    line-height: .8rem;
     min-height: 20rem;
     max-height: 32rem;
     min-width: 90%;
     overflow: auto;
     tab-size: 4;
+    text-indent: 0px;
     text-align: left;
     text-size-adjust: 100%;
     white-space: pre;

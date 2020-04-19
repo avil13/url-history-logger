@@ -2,30 +2,43 @@ import { click, write } from './link-clicker';
 import { HistoryLogger } from './history-logger';
 import { makeWrapError } from './error-loader';
 
-// Обработка ошибок
+/**
+ * Обработка ошибок
+ *
+ */
 makeWrapError((queueErrors) => {
   const text = [
-    'Мы получили очередь ошибок',
-    'Это уже можно отпрвить на сервер',
-    queueErrors,
-  ]
-    .map((v) => JSON.stringify(v, null, 2))
-    .join('\n\n');
+    '',
+    '// Мы получили очередь ошибок',
+    '// Это уже можно отпрвить на сервер',
+    'var result =',
+    JSON.stringify(queueErrors, null, 2),
+  ].join('\n');
 
-  write('#txt', text);
+  write('#txt', text, true);
 });
 
-write('#txt', `Это демонстрация работы логгера.
+write(
+  '#txt',
+  `Это демонстрация работы логгера.
 Можно изменять URL страницы. Или создать ошибку.
 Логгер сохранит это в рамках сессии, а после обработает цепочку ошибок.
-`);
+`
+);
 
+/**
+ * Здесь демонстрация подписки на логгер
+ */
 export const historyLogger = new HistoryLogger();
 
 historyLogger.subscribe((event) => {
   console.log('=>', event);
 });
 
+/**
+ * Изменение URL
+ *
+ */
 click('#next-btn', (event) => {
   const anchor = event.target as HTMLAnchorElement;
   const href = anchor.href;
@@ -36,6 +49,11 @@ click('#next-btn', (event) => {
   console.table(historyLogger.getHistory());
 });
 
+
+/**
+ * Создание ошибки
+ *
+ */
 click('#error-btn', (event) => {
   throw new Error('Bad time, Bro!');
 });

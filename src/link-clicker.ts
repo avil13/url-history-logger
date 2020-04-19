@@ -1,3 +1,5 @@
+import Prism from 'prismjs';
+
 export const click = (selector: string, callback?: Function) => {
   const el = document.querySelector(selector) as Element;
 
@@ -7,8 +9,16 @@ export const click = (selector: string, callback?: Function) => {
     });
   }
 };
-export const write = (selector: string, text: string) => {
+export const write = (
+  selector: string,
+  text: string,
+  isCode: boolean = false
+) => {
   const el = document.querySelector(selector) as Element;
+
+  if (isCode) {
+    text = Prism.highlight(text, Prism.languages.javascript, 'javascript');
+  }
 
   if (el) {
     const list = ['', '.', '..', '...', text];
