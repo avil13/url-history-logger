@@ -1,8 +1,24 @@
-import { click } from './link-clicker';
+import { click, write } from './link-clicker';
 import { HistoryLogger } from './history-logger';
 import { makeWrapError } from './error-loader';
 
-makeWrapError();
+// Обработка ошибок
+makeWrapError((queueErrors) => {
+  const text = [
+    'Мы получили очередь ошибок',
+    'Это уже можно отпрвить на сервер',
+    queueErrors,
+  ]
+    .map((v) => JSON.stringify(v, null, 2))
+    .join('\n\n');
+
+  write('#txt', text);
+});
+
+write('#txt', `Это демонстрация работы логгера.
+Можно изменять URL страницы. Или создать ошибку.
+Логгер сохранит это в рамках сессии, а после обработает цепочку ошибок.
+`);
 
 export const historyLogger = new HistoryLogger();
 

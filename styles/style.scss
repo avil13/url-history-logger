@@ -1,8 +1,9 @@
 .container {
-  a, button {
+  a,
+  button {
     cursor: pointer;
     color: #1feed2;
-    margin: 2rem;
+    margin: 0.8rem 1.2rem;
     padding: 1rem;
     display: inline-block;
     border: 1px solid #aceee5;
@@ -21,13 +22,34 @@
     font-family: monospace;
     font-size: 1rem;
   }
+  .code-block,.code-block * {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    color: #0782b1;
+    font-family: source-code-pro, monospace;
+    font-size: 0.8rem;
+    font-weight: 100;
+    height: auto;
+    line-height: 1rem;
+    min-height: 20rem;
+    max-height: 32rem;
+    min-width: 90%;
+    overflow: auto;
+    tab-size: 4;
+    text-align: left;
+    text-size-adjust: 100%;
+    white-space: pre;
+    width: auto;
+    word-break: normal;
+    word-spacing: 0px;
+  }
   .shdow {
-    -webkit-box-shadow: 1px 3px 2px 1px #B8B8B8;
-    box-shadow: 1px 3px 2px 1px #B8B8B8;
+    -webkit-box-shadow: 1px 3px 2px 1px #b8b8b8;
+    box-shadow: 1px 3px 2px 1px #b8b8b8;
   }
   .shadow-inset {
-    -webkit-box-shadow: inset 1px 3px 2px 1px #B8B8B8;
-    box-shadow: inset 1px 3px 2px 1px #B8B8B8;
+    -webkit-box-shadow: inset 1px 3px 2px 1px #b8b8b8;
+    box-shadow: inset 1px 3px 2px 1px #b8b8b8;
   }
 
   * {
